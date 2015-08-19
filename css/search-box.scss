@@ -1,0 +1,18 @@
+.search-box {
+  text-align: center;
+  justify-content: center;
+
+  .search-box-input {
+    display: flex;
+    background-color: #1b2129;
+    font-size: 60px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    color: #c3ecee;
+    outline: none;
+    appearance: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.1), inset 0 3px 10px rgba(0,0,0,0.2);
+  }
+}

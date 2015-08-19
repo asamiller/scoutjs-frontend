@@ -1,0 +1,68 @@
+.search-results-item {
+  width: 300px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    border-radius: 6px 6px 0 0;
+    background-color: #f04e51;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .content {
+    background-color: #eaeaea;
+    border-radius: 0 0 6px 6px;
+    padding: 20px;
+    flex: 1;
+  }
+
+  .desc {
+    font-size: 18px;
+    line-height: 24px;
+    color: #666;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20px;
+    border-bottom: #c7c7c7 solid 1px;
+  }
+
+  .downloads {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .downloads-box {
+    flex: 1;
+    text-align: center;
+    margin-top: 10px;
+
+    .name {
+      color: #8b8b8b;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 auto;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 40px;
+      font-weight: 300;
+      margin: 0 auto;
+    }
+
+    &:first-child {
+      border-right: 1px solid #c7c7c7;
+    }
+  }
+
+  
+}

@@ -1,0 +1,60 @@
+{
+  "name": "redux-async-example",
+  "version": "0.0.0",
+  "description": "Redux async example",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rackt/redux.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "hot",
+    "reload",
+    "hmr",
+    "live",
+    "edit",
+    "webpack",
+    "flux"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rackt/redux/issues"
+  },
+  "homepage": "http://rackt.github.io/redux",
+  "dependencies": {
+    "color": "^0.10.1",
+    "humanize-plus": "^1.5.0",
+    "isomorphic-fetch": "^2.1.1",
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
+    "react-redux": "^0.8.0",
+    "redux": "^1.0.0-rc",
+    "redux-logger": "0.0.3",
+    "redux-thunk": "^0.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.6.18",
+    "babel-loader": "^5.1.4",
+    "css-loader": "^0.16.0",
+    "expect": "^1.6.0",
+    "file-loader": "^0.8.4",
+    "jsdom": "^5.6.1",
+    "json-loader": "^0.5.2",
+    "mocha": "^2.2.5",
+    "mocha-jsdom": "^1.0.0",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "react-hot-loader": "^1.2.8",
+    "redux-devtools": "^1.0.2",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
+  }
+}
