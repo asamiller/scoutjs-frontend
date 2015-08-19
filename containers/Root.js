@@ -8,17 +8,23 @@ const store = configureStore();
 
 export default class Root extends Component {
   render() {
+    var showDevTools = true;
+
+    var devToolsElement = (
+      <DebugPanel top left bottom>
+        <DevTools
+          store={store}
+          monitor={LogMonitor}
+        />
+      </DebugPanel>
+    );
+
     return (
       <div>
         <Provider store={store}>
           {() => <NPFApp />}
         </Provider>
-        <DebugPanel top right bottom>
-          <DevTools
-            store={store}
-            monitor={LogMonitor}
-          />
-        </DebugPanel>
+        {showDevTools && devToolsElement}
       </div>
     );
   }

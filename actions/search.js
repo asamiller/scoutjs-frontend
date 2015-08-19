@@ -4,13 +4,6 @@ export const REQUEST_SEARCH = 'REQUEST_SEARCH';
 export const RECEIVE_SEARCH = 'RECEIVE_SEARCH';
 export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
-export const VIEW_PACKAGE = 'VIEW_PACKAGE';
-export const CLOSE_PACKAGE = 'CLOSE_PACKAGE';
-
-export const REQUEST_PACKAGE = 'REQUEST_PACKAGE';
-export const RECEIVE_PACKAGE = 'RECEIVE_PACKAGE';
-
-
 export function requestSearch(search) {
   return {
     type: REQUEST_SEARCH,
@@ -40,8 +33,7 @@ export function clearSearch(search) {
 
 
 
-
-export function fetchSearch(search) {
+function fetchSearchFromServer(search) {
   return dispatch => {
     dispatch(requestSearch(search));
     return fetch(`http://0.0.0.0:5000/search/${search.term}`)
@@ -63,10 +55,10 @@ function shouldFetchSearch(state, search) {
   }
 }
 
-export function fetchSearchIfNeeded(search) {
+export function fetchSearch(search) {
   return (dispatch, getState) => {
     if (shouldFetchSearch(getState(), search)) {
-      return dispatch(fetchSearch(search));
+      return dispatch(fetchSearchFromServer(search));
     }
   };
 }

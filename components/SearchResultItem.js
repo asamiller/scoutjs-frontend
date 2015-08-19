@@ -10,7 +10,7 @@ export default class SearchResultItem extends Component {
   constructor(props) {
     super(props);
 
-    // this.handleChange = this.handleChange.bind(this);
+    this.selectPackage = this.selectPackage.bind(this);
   }
 
   render () {
@@ -36,7 +36,7 @@ export default class SearchResultItem extends Component {
     };
 
     return (
-      <div className='search-results-item'>
+      <div className='search-results-item' onClick={this.selectPackage}>
         <h1 className='title' style={style}>
           {item.name}
         </h1>
@@ -65,9 +65,15 @@ export default class SearchResultItem extends Component {
       </div>
     );
   }
+
+  selectPackage () {
+    const { item, onSelect } = this.props;
+    if (onSelect) onSelect(item.id);
+  }
 }
 
 SearchResultItem.propTypes = {
   item: PropTypes.object,
   maxRank: PropTypes.number,
+  onSelect: PropTypes.func,
 };

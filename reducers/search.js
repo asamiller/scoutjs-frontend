@@ -1,11 +1,6 @@
-import { combineReducers } from 'redux';
-import {
-  REQUEST_SEARCH, 
-  RECEIVE_SEARCH,
-  CLEAR_SEARCH,
-} from '../actions';
+import { REQUEST_SEARCH, RECEIVE_SEARCH, CLEAR_SEARCH } from '../actions/search';
 
-function searchTerms(state = { term: null }, action) {
+export function searchTerms(state = { term: null }, action) {
   switch (action.type) {
   case CLEAR_SEARCH:
     return Object.assign({}, state, {
@@ -15,6 +10,19 @@ function searchTerms(state = { term: null }, action) {
     return Object.assign({}, state, action.search);
   case RECEIVE_SEARCH:
     return Object.assign({}, state, action.search);
+  default:
+    return state;
+  }
+}
+
+export function packagesBySearch(state = { }, action) {
+  switch (action.type) {
+  case CLEAR_SEARCH:
+  case RECEIVE_SEARCH:
+  case REQUEST_SEARCH:
+    return Object.assign({}, state, {
+      [action.search.term]: searchResults(state[action.search], action)
+    });
   default:
     return state;
   }
@@ -53,26 +61,3 @@ function searchResults(state = {
     return state;
   }
 }
-
-
-
-
-function packagesBySearch(state = { }, action) {
-  switch (action.type) {
-  case CLEAR_SEARCH:
-  case RECEIVE_SEARCH:
-  case REQUEST_SEARCH:
-    return Object.assign({}, state, {
-      [action.search.term]: searchResults(state[action.search], action)
-    });
-  default:
-    return state;
-  }
-}
-
-const rootReducer = combineReducers({
-  searchResults: packagesBySearch,
-  search: searchTerms,
-});
-
-export default rootReducer;

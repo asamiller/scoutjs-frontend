@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchSearchIfNeeded } from '../actions';
+import { Spring } from 'react-motion';
+
+import { fetchSearch } from '../actions/search';
+import { viewPackage } from '../actions/packages';
 import LogoBar from '../components/LogoBar';
-import SearchBox from '../components/SearchBox';
-import SearchResults from '../components/SearchResults';
+import Search from '../components/Search';
+import Packages from '../components/Packages';
 
 require('../css/app.scss');
 
@@ -12,65 +15,83 @@ class NPFApp extends Component {
     super(props);
 
     this.handleSearch = this.handleSearch.bind(this);
+    this.handlePackageOpen = this.handlePackageOpen.bind(this);
   }
 
   componentDidMount() {
     const { dispatch, search } = this.props;
-    dispatch(fetchSearchIfNeeded(search));
+    dispatch(fetchSearch(search));
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.search !== this.props.search) {
       const { dispatch, search } = nextProps;
-      dispatch(fetchSearchIfNeeded(search));
+      dispatch(fetchSearch(search));
     }
   }
 
   render () {
-    const { search, packages, isFetching, lastUpdated } = this.props;
+    const { search, searchResults, selectedPackages } = this.props;
+
+    var arePackagesShown = !!selectedPackages.length;
     return (
-      <div>
+      <div className='app'>
         <LogoBar />
-        <SearchBox onSearch={this.handleSearch} search={search} />
-        <SearchResults packages={packages} />
+        <Spring endValue={arePackagesShown ? 50 : 0}>
+          {val =>
+            <div className='content'>
+              <Search
+                search={search}
+                searchResults={searchResults}
+                onSearch={this.handleSearch}
+                onPackageOpen={this.handlePackageOpen}
+                width={val}
+              />
+              <Packages
+                selectedPackages={selectedPackages}
+                width={val}
+              />
+            </div>
+          }
+        </Spring>
+
+        
       </div>
     );
   }
 
   handleSearch (term) {
     const { dispatch } = this.props;
+    dispatch(fetchSearch({ term }));
+  }
 
-    dispatch(fetchSearchIfNeeded({ term }));
+  handlePackageOpen (id) {
+    const { dispatch } = this.props;
+    dispatch(viewPackage(id));
   }
 }
 
 NPFApp.propTypes = {
   search: PropTypes.object.isRequired,
-  packages: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
+  searchResults: PropTypes.object.isRequired,
+  selectedPackages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-  const { search, searchResults } = state;
+  const { search, searchResults, packages, selectedPackages } = state;
 
-  let resultsForSearch = searchResults[search.term] || {
+  let singleSearchResult = searchResults[search.term] || {
     isFetching: true,
     items: []
   };
 
-  const {
-    isFetching,
-    lastUpdated,
-    items,
-  } = resultsForSearch;
+  let selectedPackagesData = selectedPackages.map((id, index)=>packages[id]);
 
   return {
     search,
-    packages: items,
-    isFetching,
-    lastUpdated,
+    searchResults: singleSearchResult,
+    selectedPackages: selectedPackagesData,
   };
 }
 

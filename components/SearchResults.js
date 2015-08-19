@@ -8,12 +8,11 @@ export default class SearchResults extends Component {
 
   constructor(props) {
     super(props);
-
-    // this.handleChange = this.handleChange.bind(this);
   }
 
   render () {
-    const { packages } = this.props;
+    const { searchResults, onPackageOpen } = this.props;
+    var packages = searchResults.items || [];
 
     let maxRank = _.max(_.map(packages, (item)=>item.rank));
 
@@ -24,6 +23,7 @@ export default class SearchResults extends Component {
             key={index}
             item={item}
             maxRank={maxRank}
+            onSelect={onPackageOpen}
           />
         )}
       </div>
@@ -33,4 +33,5 @@ export default class SearchResults extends Component {
 
 SearchResults.propTypes = {
   packages: PropTypes.object,
+  onPackageOpen: PropTypes.func,
 };

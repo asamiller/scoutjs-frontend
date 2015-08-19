@@ -1,3 +1,7 @@
+@import "../node_modules/cssrecipes-reset/index.css";
+@import "../node_modules/cssrecipes-defaults/index.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
 html {
   box-sizing: border-box;
 }
@@ -5,8 +9,33 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #2b333f;
   font-size: 18px;
   font-family: 'Lato', sans-serif;
 }
+
+.app > .content {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+// div, span {
+//   box-sizing: border-box;
+//   position: relative;
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: stretch;
+//   flex-shrink: 0;
+
+//   border: 0 solid black;
+//   margin: 0;
+//   padding: 0;
+// }
