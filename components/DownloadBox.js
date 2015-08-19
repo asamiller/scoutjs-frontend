@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import Humanize from 'humanize-plus';
 
+require('../css/downloads.scss');
+
 export default class DownloadBox extends Component {
 
   render () {

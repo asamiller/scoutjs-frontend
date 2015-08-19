@@ -1,0 +1,41 @@
+.downloads {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  padding-top: 10px;
+
+  &.background {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 4px;
+  }
+
+  .downloads-box {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #c7c7c7;
+
+    .name {
+      color: #8b8b8b;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 auto;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 40px;
+      font-weight: 300;
+      margin: 0 auto;
+      color: #f04e51;
+    }
+
+    /*&:nth-child(2) .value { color: #129fdd;}*/
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+

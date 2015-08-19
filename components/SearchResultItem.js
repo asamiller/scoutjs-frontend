@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import _ from 'lodash';
 import Color from 'color';
-import DownloadBox from './SearchResultDownloadBox.js';
+import DownloadBox from './DownloadBox.js';
 
 require('../css/search-results-item.scss');
 

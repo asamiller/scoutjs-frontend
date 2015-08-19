@@ -1,3 +1,4 @@
+
 .package-item {
 
   .title {
@@ -20,6 +21,13 @@
 
       i {
         margin: 5px;
+        transition: all 300ms;
+        transform: scale(1);
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+      }
+
+       &:hover i {
+        transform: scale(1.2);
       }
     }
 
