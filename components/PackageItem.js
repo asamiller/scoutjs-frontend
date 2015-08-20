@@ -74,6 +74,7 @@ export default class PackageItem extends Component {
         <div className='chart'>
           <DownloadChart
             daily={_.get(item, 'downloads.daily')}
+            monthly={_.get(item, 'downloads.monthly')}
           />
         </div>
 
