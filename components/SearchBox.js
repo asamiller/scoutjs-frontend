@@ -39,7 +39,7 @@ export default class SearchBox extends Component {
 
   handleSubmit (event) {
     event.preventDefault();
-    if (this.props.onSearch) this.props.onSearch(this.state.value);
+    if (this.props.onSearch) this.props.onSearch(this.state.value, 0);
   }
 }
 

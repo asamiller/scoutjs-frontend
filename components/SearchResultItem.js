@@ -20,19 +20,18 @@ export default class SearchResultItem extends Component {
 
     let color;
 
-    let color1 = Color('#f04e51');
-    let color2 = Color('#c0b861');
-    let color3 = Color('#218791');
+    let color1 = Color('#13a0df');
+    let color2 = Color('#ccc');
 
-    if (rank > 0.5) {
+    // if (rank > 0.5) {
       color = color1.mix(color2, rank);
-    }
-    else {
-      color = color2.mix(color3, rank);
-    }
+    // }
+    // else {
+      // color = color2.mix(color3, rank);
+    // }
 
     let style = {
-      backgroundColor: color.hexString(),
+      borderColor: color.hexString(),
     };
 
     return (
@@ -44,7 +43,7 @@ export default class SearchResultItem extends Component {
         <div className='content'>
 
           <p className='desc'>
-            {item.description}
+            {_.trunc(item.description, 80)}
           </p>
 
           <div className='downloads'>

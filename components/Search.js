@@ -1,24 +1,28 @@
 import React, { PropTypes, Component } from 'react';
 import _ from 'lodash';
+import classNames from 'classnames';
+
 import SearchBox from '../components/SearchBox';
 import SearchResults from '../components/SearchResults';
 
 export default class Search extends Component {
 
   render () {
-    const { search, searchResults, onSearch, onPackageOpen, width } = this.props;
+    const { search, searchResults, onSearch, onPackageOpen, isPackageOpen } = this.props;
 
-    var style = {
-      width: (100 - width) + '%',
-    };
+    let classes = classNames('search', {
+      'fullsize': !isPackageOpen,
+    });
 
     return (
-      <div className='search' style={style}>
+      <div className={classes}>
         <SearchBox
           onSearch={onSearch}
           search={search}
         />
         <SearchResults
+          search={search}
+          onSearch={onSearch}
           searchResults={searchResults}
           onPackageOpen={onPackageOpen}
         />
@@ -32,5 +36,5 @@ Search.propTypes = {
   searchResults: PropTypes.object,
   onSearch: PropTypes.func,
   onPackageOpen: PropTypes.func,
-  width: PropTypes.number,
+  isPackageOpen: PropTypes.bool,
 };

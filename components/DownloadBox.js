@@ -16,8 +16,12 @@ export default class DownloadBox extends Component {
 
     return (
       <div className='downloads-box'>
-        <h3 className='value' style={style}>{Humanize.compactInteger(value, 1).toLowerCase()}</h3>
-        <p className='name'>{name}</p>
+        <h3 className='value' style={style}>
+          {Humanize.compactInteger(value, 1).toLowerCase()}
+        </h3>
+        <p className='name'>
+          {name}
+        </p>
       </div>
     );
   }

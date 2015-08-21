@@ -15,10 +15,8 @@ function receiveSearch(search, json) {
   return {
     type: RECEIVE_SEARCH,
     items: json.packages,
-    results: json.results,
-    next: json.next,
     receivedAt: Date.now(),
-    search,
+    search: Object.assign({}, search, { next: json.next, start: search.next }),
   };
 }
 
@@ -36,7 +34,7 @@ export function clearSearch(search) {
 function fetchSearchFromServer(search) {
   return dispatch => {
     dispatch(requestSearch(search));
-    return fetch(`http://0.0.0.0:5000/search/${search.term}`)
+    return fetch(`http://0.0.0.0:5000/search/${search.term}/${search.next || 0}`)
       .then(req => req.json())
       .then(json => dispatch(receiveSearch(search, json)));
   }
@@ -46,13 +44,20 @@ function shouldFetchSearch(state, search) {
   if (!search || !search.term) return false;
 
   const results = state.searchResults[search.term];
-  if (!results) {
-    return true;
-  } else if (results.isFetching) {
+
+  if (results && results.isFetching) {
     return false;
   } else {
-    return results.didInvalidate;
+    return true;
   }
+
+  // if (!results) {
+  //   return true;
+  // } else if (results.isFetching) {
+  //   return false;
+  // } else {
+  //   return results.didInvalidate;
+  // }
 }
 
 export function fetchSearch(search) {

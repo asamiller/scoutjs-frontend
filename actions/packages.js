@@ -14,6 +14,13 @@ function viewPackageAction(id) {
   };
 }
 
+export function closePackage(id) {
+  return {
+    type: CLOSE_PACKAGE,
+    id,
+  };
+}
+
 function requestPackage(id) {
   return {
     type: REQUEST_PACKAGE,
@@ -65,3 +72,7 @@ export function viewPackage(id) {
     }
   };
 }
+
+// export function closePackage(id) {
+//   return (dispatch) => dispatch(closePackageAction(id));
+// }
