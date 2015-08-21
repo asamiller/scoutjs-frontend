@@ -1,41 +1,116 @@
 
 .package-item {
 
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 50px;
+  .package-divider {
+    position: relative;
+    font-size: 20px;
     font-weight: 300;
-    background-color: #fff;
     color: #12aaeb;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+
+    span {
+      background-color: #f1f5f8;
+      padding: 10px 20px;
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      right: 20px;
+      content: ' ';
+      border-bottom: solid 1px #12aaeb;
+      z-index: -1;
+    }
+  }
+
+  .title-bar {
+    position: relative;
+    background-color: #fff;
     margin: 0;
     padding: 20px;
     box-shadow: 0 4px 30px rgba(61,115,158,0.1);
-    text-transform: uppercase;
+
+    .title {
+      font-size: 50px;
+      font-weight: 300;
+      color: #12aaeb;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 10px;
+    }
+
+    .byline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      color: #94a8ba;
+      transition: all 300ms;
+
+      .user-avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        margin-right: 5px;
+
+        transition: all 300ms;
+        transform: scale(1);
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+      }
+
+      &:hover {
+        color: #333;
+        .user-avatar { transform: scale(1.2); }
+      }
+    }
+
+
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      font-size: 40px;
+      font-weight: 300;
+      color: #ccc;
+      transition: all 300ms;
+
+      &:hover {
+        color: #333;
+      }
+    }
 
     .repo {
       font-size: 20px;
       text-transform: none;
-      color: #666;
+      color: #94a8ba;
+      transition: all 300ms;
 
       i {
         margin: 5px;
         transition: all 300ms;
         transform: scale(1);
         transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+        color: #333;
       }
 
-       &:hover i {
-        transform: scale(1.2);
+      &:hover {
+        color: #333;
+        i { transform: scale(1.2); }
       }
     }
 
   }
 
   .install {
-    text-align: center;
-
     input {
       text-align: center;
       padding: 20px;
@@ -56,5 +131,6 @@
     padding: 0 20px;
     margin: 0;
     color: #597a96;
+    line-height: 28px;
   }
 }
