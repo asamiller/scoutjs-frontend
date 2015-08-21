@@ -46,16 +46,18 @@ export default class SearchResults extends Component {
     let maxRank = _.max(_.map(packages, (item)=>item.rank));
 
     return (
-      <div className='search-results'>
-        {_.map(packages, (item, index) =>
-          <SearchResultItem
-            key={index}
-            item={item}
-            maxRank={maxRank}
-            onSelect={onPackageOpen}
-          />
-        )}
+      <div>
+        <div className='search-results'>
+          {_.map(packages, (item, index) =>
+            <SearchResultItem
+              key={index}
+              item={item}
+              maxRank={maxRank}
+              onSelect={onPackageOpen}
+            />
+          )}
 
+        </div>
         <Loader visible={loading} />
       </div>
     );
@@ -83,7 +85,7 @@ export default class SearchResults extends Component {
 
     if ((scrollTop + windowHeight) > triggerPosition && !this.calledTriggerPositions[triggerPosition]) {
       console.log('scroll end');
-      
+
       this.calledTriggerPositions[triggerPosition] = true;
       if (onSearch) onSearch(search.term, search.next);
     }
