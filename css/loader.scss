@@ -1,0 +1,36 @@
+.loader-wrapper {
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+
+  $size: 60px;
+
+  margin-left: -($size/2);
+  width: $size;
+  height: $size;
+
+  border-style: solid;
+  border-width: 1px;
+  border-radius: $size/2;
+  border-top-color: rgba(255,255,255,0.5);
+  border-right-color: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.2);
+  border-left-color: rgba(255,255,255,0.2);
+  animation: spin 600ms linear infinite;
+
+  &.dark {
+    border-top-color:    rgba(33,79,126,0.5);
+    border-right-color:  rgba(33,79,126,0.5);
+    border-bottom-color: rgba(33,79,126,0.2);
+    border-left-color:   rgba(33,79,126,0.2);
+  }
+
+  @keyframes spin { 
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
