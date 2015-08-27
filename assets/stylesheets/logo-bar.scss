@@ -1,10 +1,17 @@
 .logo-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 30px;
-  background-color: #0c243e;
-  color: #fff;
   text-align: center;
+
+  .logo {
+    width: 205px;
+    height: 37px;
+  }
+
+  .tag-line {
+    color: #597a96;
+    font-size: 18px;
+    font-weight: 400;
+    border-bottom: solid #374a59 1px;
+    padding-bottom: 20px;
+    margin: 5px 0;
+  }
 }

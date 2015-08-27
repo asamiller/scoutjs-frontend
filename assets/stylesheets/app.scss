@@ -1,8 +1,16 @@
 @import "../../node_modules/cssrecipes-reset/index.css";
 @import "../../node_modules/cssrecipes-defaults/index.css";
 
+@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
+  background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+}
+
 html {
   box-sizing: border-box;
+  min-height: 100%;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -13,13 +21,14 @@ a {
 }
 
 body {
-  background-color: #183e65;
+  background-color: #22282e;
+  @include gradient-directional(#203546, #22282e, 170deg);
   font-size: 18px;
   font-family: 'Lato', sans-serif;
+  min-height: 100%;
 }
 
 .app {
-  padding-top: 30px;
 }
 
 // div, span {

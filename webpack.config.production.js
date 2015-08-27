@@ -41,11 +41,15 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!cssnext-loader') },
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
       { test: /\.scss$/, loader: 'style!css!autoprefixer!sass' },
-      { test: /\.png$/,  loader: 'url-loader?mimetype=image/png'  },
       { test: /\.json$/,  loader: 'json-loader'  },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,  loader: 'file-loader' },
-      { test: /\.jpg$/, loader: 'file-loader' }
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+            'file?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
     ]
   },
   cssnext: {

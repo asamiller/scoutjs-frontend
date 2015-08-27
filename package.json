@@ -62,6 +62,8 @@
     "file-loader": "^0.8.4",
     "gh-pages": "^0.3.1",
     "html-webpack-plugin": "^1.6.1",
+    "image-webpack-loader": "^1.6.1",
+    "imagemin": "^3.2.0",
     "json-loader": "^0.5.2",
     "node-sass": "^3.2.0",
     "react-hot-loader": "^1.2.9",
