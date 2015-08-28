@@ -1,11 +1,11 @@
 {
-  "name": "NPF-frontend",
+  "name": "Scout-frontend",
   "version": "0.0.1",
   "description": "Frontend for the node package finder",
   "author": "Asa Miller <asa@tinycreative.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asamiller/npf-frontend.git"
+    "url": "https://github.com/asamiller/scout-frontend.git"
   },
   "keywords": [
     "react",
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/asamiller/npf-frontend/issues"
+    "url": "https://github.com/asamiller/scout-frontend/issues"
   },
   "scripts": {
     "build": "npm run clean && webpack",
